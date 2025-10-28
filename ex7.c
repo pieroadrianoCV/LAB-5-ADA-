@@ -29,7 +29,7 @@ Vertex STACKpop() {
     if (stackTop >= 0) {
         return stackArray[stackTop--];
     }
-    return -1; // Error o pila vacía
+    return -1;
 }
 
 int STACKempty() {
@@ -84,7 +84,6 @@ void dfsIterativo(Graph *G, Vertex start) {
     while (!STACKempty()) {
         Vertex v = STACKpop(); 
 
-        // Se recorre la lista de adyacencia
         for (Link t = G->adjList[v]; t != NULL; t = t->next) {
             Vertex w = t->neighbor;
 
@@ -100,8 +99,7 @@ void dfsIterativo(Graph *G, Vertex start) {
 void GRAPHdfsIterativo(Graph *G) {
     Vertex u;
     discoveryCount = 0;
-    stackTop = -1; // Resetear la pila
-
+    stackTop = -1;
     for (u = 0; u < G->numVertices; u++)
         pre[u] = -1;
 
@@ -122,8 +120,6 @@ int main(int argc, char *argv[]) {
     printf(">>> DFS Iterativo para un Grafo con %d vertices <<<\n", TheGraph->numVertices);
     
     GRAPHdfsIterativo(TheGraph);
-    
-    // Imprimir resultado final
     printf("\n>>> Orden de Descubrimiento Final (pre[]) <<<\n");
     printf("Vertex: ");
     for (Vertex v = 0; v < TheGraph->numVertices; v++) {
